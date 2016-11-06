@@ -18,12 +18,7 @@ commands:
                   /StaffApps
      description: Staff Application Command
      aliases: [StaffApplications]
-    RTP:
+   furniturehelp:
      usage: |
-                  /RTP
-     description: RandomTeleport Command
-     aliases: [Wilderness, Wild]
-permissions:
-     core.spawn:
-     description: Spawn
-     default: true
+                  /furniturehelp
+     description: Help Command for furniture

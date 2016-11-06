@@ -6,6 +6,7 @@ import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import me.morgancentral99.encrypted.commands.FurnatureHelp;
 import me.morgancentral99.encrypted.commands.RTP;
 import me.morgancentral99.encrypted.commands.SpawnCommands;
 import me.morgancentral99.encrypted.commands.StaffApp;
@@ -55,16 +56,16 @@ public class Main extends JavaPlugin {
 		pm.registerEvents(new Weather(), this);
 		pm.registerEvents(new OnJoin(), this);
 		pm.registerEvents(new OnServerListPing(this), this);
+		
 	}
 
 	
 	public void registerCommands() {
 		this.getCommand("spawn").setExecutor(new SpawnCommands());
 		this.getCommand("StaffApps").setExecutor(new StaffApp());
-		this.getCommand("RTP").setExecutor(new RTP());
+	//	this.getCommand("RTP").setExecutor(new RTP());
+		this.getCommand("furniturehelp").setExecutor(new FurnatureHelp());
 	//	this.getCommand("maintence").setExecutor(new Maintence());
 	}
-
-
 
 }
