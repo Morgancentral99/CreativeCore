@@ -6,6 +6,7 @@ import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import me.morgancentral99.encrypted.commands.RTP;
 import me.morgancentral99.encrypted.commands.SpawnCommands;
 import me.morgancentral99.encrypted.commands.StaffApp;
 import me.morgancentral99.encrypted.listeners.OnJoin;
@@ -56,6 +57,7 @@ public class Main extends JavaPlugin {
 	public void registerCommands() {
 		this.getCommand("spawn").setExecutor(new SpawnCommands());
 		this.getCommand("StaffApps").setExecutor(new StaffApp());
+		this.getCommand("RTP").setExecutor(new RTP());
 	//	this.getCommand("maintence").setExecutor(new Maintence());
 	}
 
