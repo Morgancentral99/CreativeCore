@@ -1,0 +1,29 @@
+name: CreativeCore
+version: 0.0.1
+main: me.morgancentral99.encrypted.Main
+database: false
+author: morgancentral99
+permission-message: &noperms "§cError: §fNo permission!"
+
+commands:
+   spawn:
+     usage: |
+                  /spawn <arg1>
+     description: Spawn Command
+     aliases: [espawn]
+     permission: core.spawn
+     permission-message: *noperms         
+   StaffApps:
+     usage: |
+                  /StaffApps
+     description: Staff Application Command
+     aliases: [StaffApplications]
+    RTP:
+     usage: |
+                  /RTP
+     description: RandomTeleport Command
+     aliases: [Wilderness, Wild]
+permissions:
+     core.spawn:
+     description: Spawn
+     default: true
