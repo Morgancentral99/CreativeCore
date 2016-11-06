@@ -22,3 +22,7 @@ commands:
      usage: |
                   /furniturehelp
      description: Help Command for furniture
+   shop:
+     usage: |
+                  /shop
+     description: shop command
