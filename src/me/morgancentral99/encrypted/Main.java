@@ -9,6 +9,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 import me.morgancentral99.encrypted.commands.SpawnCommands;
 import me.morgancentral99.encrypted.commands.StaffApp;
 import me.morgancentral99.encrypted.listeners.OnJoin;
+import me.morgancentral99.encrypted.listeners.OnServerListPing;
 import me.morgancentral99.encrypted.listeners.Weather;
 import me.morgancentral99.encrypted.utils.Logger;
 
@@ -28,6 +29,8 @@ public class Main extends JavaPlugin {
 		registerCommands();
 		registerListeners();
 		config.addDefault("maitenceMode", false);
+		config.addDefault("motd1", "s&4Morgan likes it from behind.");
+		config.addDefault("motd2", "s&aFrom brocoli.");
 		config.options().copyDefaults(true);
 		saveConfig();
 	}
@@ -50,6 +53,7 @@ public class Main extends JavaPlugin {
 		//pm.registerEvents(new Command(), this);
 		pm.registerEvents(new Weather(), this);
 		pm.registerEvents(new OnJoin(), this);
+		pm.registerEvents(new OnServerListPing(this), this);
 	}
 
 	
