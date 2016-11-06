@@ -7,7 +7,6 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 
-import it.unimi.dsi.fastutil.Hash;
 import me.morgancentral99.encrypted.HashMaps;
 import me.morgancentral99.encrypted.Main;
 import net.md_5.bungee.api.ChatColor;

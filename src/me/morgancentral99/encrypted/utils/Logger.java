@@ -1,6 +1,5 @@
 package me.morgancentral99.encrypted.utils;
 
-import me.morgancentral99.encrypted.Main;
 import org.bukkit.Bukkit;
 
 

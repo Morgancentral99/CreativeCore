@@ -6,10 +6,8 @@ import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import me.morgancentral99.encrypted.commands.Maintence;
 import me.morgancentral99.encrypted.commands.SpawnCommands;
 import me.morgancentral99.encrypted.commands.StaffApp;
-import me.morgancentral99.encrypted.listeners.Command;
 import me.morgancentral99.encrypted.listeners.OnJoin;
 import me.morgancentral99.encrypted.listeners.Weather;
 import me.morgancentral99.encrypted.utils.Logger;
