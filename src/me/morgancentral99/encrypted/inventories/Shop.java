@@ -50,9 +50,18 @@ public class Shop implements Listener {
 		
 		if(i.getName().equals(inv)) {
 			if(Clicked.equals(UntouchableTag)) {
-				
+				if(Methods.getClickedandBalance(2000, p)) {
+					Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "pex user " + p.getName() + " add deluxetags.tag.tag1");
+					p.sendMessage(ChatColor.GREEN + "Bought: " + ChatColor.GRAY + "[" + ChatColor.DARK_RED + "Untouchable" + ChatColor.GRAY + "]");
+					e.setCancelled(true);
+				}
+			} else if(Clicked.equals(exit)) {
+				p.closeInventory();
+				e.setCancelled(true);
 			}
+			e.setCancelled(true);
 		}
+		e.setCancelled(true);
 				
 	}
 	
