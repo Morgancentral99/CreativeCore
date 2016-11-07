@@ -59,9 +59,9 @@ public class Shop implements Listener {
 				p.closeInventory();
 				e.setCancelled(true);
 			}
-			e.setCancelled(true);
+		
 		}
-		e.setCancelled(true);
+	
 				
 	}
 	

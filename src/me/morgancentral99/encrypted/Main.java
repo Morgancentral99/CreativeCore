@@ -1,5 +1,7 @@
 package me.morgancentral99.encrypted;
 
+import java.io.File;
+
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.PluginDescriptionFile;
@@ -14,13 +16,21 @@ import me.morgancentral99.encrypted.inventories.Shop;
 import me.morgancentral99.encrypted.listeners.OnJoin;
 import me.morgancentral99.encrypted.listeners.OnServerListPing;
 import me.morgancentral99.encrypted.listeners.Weather;
+import me.morgancentral99.encrypted.utils.LoadConfiguration;
 import me.morgancentral99.encrypted.utils.Logger;
 import net.milkbowl.vault.economy.Economy;
 
 public class Main extends JavaPlugin {
 	Main m;
+	LoadConfiguration lc;
 	
 	FileConfiguration config = getConfig(); 
+	
+	public File PlayerFile;
+	public File IPFile;
+	public FileConfiguration Players;
+	public FileConfiguration IPS;
+	public File subDir = new File("plugins/CreativeCore/AltInfo");
 	
 	boolean maintenceEnabled = false;
 
@@ -33,6 +43,7 @@ public class Main extends JavaPlugin {
 		m = this;
 		registerCommands();
 		registerListeners();
+		lc.loadExtraFiles();
 		config.addDefault("maitenceMode", false);
 		config.addDefault("motd1", "s&4Morgan likes it from behind.");
 		config.addDefault("motd2", "s&aFrom brocoli.");
