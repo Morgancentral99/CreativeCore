@@ -44,16 +44,19 @@ public class Main extends JavaPlugin {
 	@Override
 	public void onEnable() {
 		Logger.info("Loaded: " + pdf.getName());
-		m = this;
+		this.m = this;
 		registerCommands();
 		registerListeners();
 		lc.loadExtraFiles();
-		config.addDefault("maitenceMode", false);
-		config.addDefault("motd1", "s&4Morgan likes it from behind.");
-		config.addDefault("motd2", "s&aFrom brocoli.");
-		config.options().copyDefaults(true);
-		saveConfig();
-		if(!setupEconomy()) {
+	    this.config.addDefault("maitenceMode", Boolean.valueOf(false));
+	    this.config.addDefault("motd1", "s&0-----&7=====&0[&6Encrypted Creative&0]&7=====&0-----");
+	    this.config.addDefault("motd2", "s&6[1.10]  &0[&3Fixed Lag out Issues&0]");
+	    this.config.addDefault("Spawn.FlatWorld", "0.0.0.0.0.world");
+	    this.config.addDefault("Spawn.DefaultWorld", "0.0.0.0.0.world");
+	    this.config.addDefault("Spawn.PlotWorld", "0.0.0.0.0.world");
+	    this.config.options().copyDefaults(true);
+	    saveConfig();
+	    if(!setupEconomy()) {
 			getServer().getPluginManager().disablePlugin(this);
 		}
 		this.Players = new YamlConfiguration();
@@ -77,7 +80,7 @@ public class Main extends JavaPlugin {
 		PluginManager pm = Bukkit.getPluginManager();
 		//pm.registerEvents(new Command(), this);
 		pm.registerEvents(new Weather(), this);
-		pm.registerEvents(new OnJoin(), this);
+		pm.registerEvents(new OnJoin(this), this);
 		pm.registerEvents(new OnServerListPing(this), this);
 		pm.registerEvents(new Shop(), this);
 		
@@ -85,7 +88,7 @@ public class Main extends JavaPlugin {
 	
 	
 	public void registerCommands() {
-		this.getCommand("spawn").setExecutor(new SpawnCommands());
+		this.getCommand("spawn").setExecutor(new SpawnCommands(this));
 		this.getCommand("StaffApps").setExecutor(new StaffApp());
 		this.getCommand("Shop").setExecutor(new me.morgancentral99.encrypted.commands.Shop());
 	//	this.getCommand("RTP").setExecutor(new RTP());
