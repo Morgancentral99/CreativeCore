@@ -9,10 +9,11 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 
 import me.morgancentral99.encrypted.Main;
-import net.md_5.bungee.api.ChatColor;
+import me.morgancentral99.encrypted.utils.LoadConfiguration;
 
 public class OnJoin implements Listener {
 	Main m;
+	LoadConfiguration lc;
 	
 	@EventHandler
 	public void onPlayerJoin(PlayerJoinEvent e) {
@@ -20,6 +21,7 @@ public class OnJoin implements Listener {
 	//	if(m.getConfig().getBoolean("maitenceMode")) {
 	//		e.getPlayer().kickPlayer(ChatColor.GOLD + "Server in Maintence Mode, Check back Later!");
 	//	}
+		
 		p.setGameMode(GameMode.CREATIVE);
 		if(!(e.getPlayer().hasPlayedBefore())) {
 			Location loc = new Location(Bukkit.getWorld("World2"), 2342, 60, 117);

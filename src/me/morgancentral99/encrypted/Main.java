@@ -1,9 +1,11 @@
 package me.morgancentral99.encrypted;
 
 import java.io.File;
+import java.util.HashSet;
 
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.RegisteredServiceProvider;
@@ -33,6 +35,8 @@ public class Main extends JavaPlugin {
 	public File subDir = new File("plugins/CreativeCore/AltInfo");
 	
 	boolean maintenceEnabled = false;
+	
+	private HashSet<String> AltList = new HashSet();
 
 	private PluginDescriptionFile pdf = getDescription();
 	public static Economy econ = null;
@@ -52,6 +56,8 @@ public class Main extends JavaPlugin {
 		if(!setupEconomy()) {
 			getServer().getPluginManager().disablePlugin(this);
 		}
+		this.Players = new YamlConfiguration();
+		this.IPS = new YamlConfiguration();
 	}
 
 	public boolean isMaintenceEnabled() {
