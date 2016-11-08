@@ -7,46 +7,104 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
+import me.morgancentral99.encrypted.Main;
 import net.md_5.bungee.api.ChatColor;
 
 public class SpawnCommands implements CommandExecutor {
+	
+	private Main plugin;
+	
+	public SpawnCommands(Main plugin) {
+		this.plugin = plugin;
+	}
 
 	@Override
-	public boolean onCommand(CommandSender s, Command cmd, String label, String[] args) {
-		if(s instanceof Player) {
+	public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+		if(sender instanceof Player) {
 			if(label.equalsIgnoreCase("spawn")) {
-				Player p = (Player)s;
+				Player player = (Player) sender;
 				if(args.length == 0) {
-					runHelpCommand(s);
-					return true;
-				} else if(args[0].length() >= 1) {
-					if(args[0].equalsIgnoreCase("flat")) {
-						s.sendMessage(ChatColor.GOLD + "Teleporting to Flat Spawn!");
-						Location loc = new Location(Bukkit.getWorld("World2"), 2342, 60, 117);
-						loc.setYaw(180F);
-						p.teleport(loc);
-						return true;
-					}else if(args[0].equalsIgnoreCase("Default")) {
-						s.sendMessage(ChatColor.GOLD + "Teleporting to Default Spawn!");
-						p.teleport(new Location(Bukkit.getWorld("Default"), -436, 79, 263));
-						return true;
-					} else if(args[0].equalsIgnoreCase("Plotworld")) {
-						s.sendMessage(ChatColor.GOLD + "Teleporting to PlotWorld Spawn!");
-						p.teleport(new Location(Bukkit.getWorld("Plotworld2"), -266, 65, -21));
-						return true;
+					spawnCommands(player);
+				} else if(args.length == 1) {
+					switch(args[0]) {
+					case "flat":
+						player.teleport(getFlatSpawnLoc());
+						break;
+					case "default":
+						player.teleport(getDefaultSpawnLoc());
+						break;
+					case "plotworld":
+						player.teleport(getPlotSpawnLoc());
+						break;
+					default:
+						spawnCommands(player);
 					}
+				} else {
+					spawnCommands(player);
+					return true;
 				}
 			}
 		}
 		return false;
 	}
 
-	private void runHelpCommand(CommandSender s) {
-		s.sendMessage(ChatColor.DARK_BLUE + "-------" + ChatColor.GOLD + "Spawn Help " + ChatColor.DARK_BLUE + "-------");
+	void spawnCommands(Player player) {
+		player.sendMessage(ChatColor.DARK_BLUE + "-------" + ChatColor.GOLD + "Spawn Help " + ChatColor.DARK_BLUE + "-------");
 		//s.sendMessage(ChatColor.GOLD + "/Spawn Server");
-		s.sendMessage(ChatColor.GOLD + "/Spawn Flat");
-		s.sendMessage(ChatColor.GOLD + "/Spawn Default");
-		s.sendMessage(ChatColor.GOLD + "/Spawn PlotWorld");
+		player.sendMessage(ChatColor.GOLD + "/Spawn Flat");
+		player.sendMessage(ChatColor.GOLD + "/Spawn Default");
+		player.sendMessage(ChatColor.GOLD + "/Spawn PlotWorld");
+	}
+	
+	Location getFlatSpawnLoc() {
+		String spawn = plugin.getConfig().getString("Spawn.FlatWorld");
+		String[] spawnLoc = spawn.split(".");
+		String x = spawnLoc[0];
+		String y = spawnLoc[1];
+		String z = spawnLoc[2];
+		String pitch = spawnLoc[3];
+		String yaw = spawnLoc[4];
+		String world = spawnLoc[5];
+		Float fpitch = Float.valueOf(pitch);
+		Float fyaw = Float.valueOf(yaw);
+		Location loc = new Location(Bukkit.getWorld(world), Integer.valueOf(x), Integer.valueOf(y), Integer.valueOf(z));
+		loc.setYaw(fyaw);
+		loc.setPitch(fpitch);
+		return loc;
+	}
+	
+	Location getDefaultSpawnLoc() {
+		String spawn = plugin.getConfig().getString("Spawn.DefaultWorld");
+		String[] spawnLoc = spawn.split(".");
+		String x = spawnLoc[0];
+		String y = spawnLoc[1];
+		String z = spawnLoc[2];
+		String pitch = spawnLoc[3];
+		String yaw = spawnLoc[4];
+		String world = spawnLoc[5];
+		Float fpitch = Float.valueOf(pitch);
+		Float fyaw = Float.valueOf(yaw);
+		Location loc = new Location(Bukkit.getWorld(world), Integer.valueOf(x), Integer.valueOf(y), Integer.valueOf(z));
+		loc.setYaw(fyaw);
+		loc.setPitch(fpitch);
+		return loc;
+	}
+	
+	Location getPlotSpawnLoc() {
+		String spawn = plugin.getConfig().getString("Spawn.PlotWorld");
+		String[] spawnLoc = spawn.split(".");
+		String x = spawnLoc[0];
+		String y = spawnLoc[1];
+		String z = spawnLoc[2];
+		String pitch = spawnLoc[3];
+		String yaw = spawnLoc[4];
+		String world = spawnLoc[5];
+		Float fpitch = Float.valueOf(pitch);
+		Float fyaw = Float.valueOf(yaw);
+		Location loc = new Location(Bukkit.getWorld(world), Integer.valueOf(x), Integer.valueOf(y), Integer.valueOf(z));
+		loc.setYaw(fyaw);
+		loc.setPitch(fpitch);
+		return loc;
 	}
 	
 	

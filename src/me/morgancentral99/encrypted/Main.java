@@ -12,6 +12,7 @@ import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import me.morgancentral99.encrypted.commands.FurnatureHelp;
+import me.morgancentral99.encrypted.commands.SetSpawn;
 import me.morgancentral99.encrypted.commands.SpawnCommands;
 import me.morgancentral99.encrypted.commands.StaffApp;
 import me.morgancentral99.encrypted.inventories.Shop;
@@ -47,7 +48,7 @@ public class Main extends JavaPlugin {
 		this.m = this;
 		registerCommands();
 		registerListeners();
-		lc.loadExtraFiles();
+	//	lc.loadExtraFiles();
 	    this.config.addDefault("maitenceMode", Boolean.valueOf(false));
 	    this.config.addDefault("motd1", "s&0-----&7=====&0[&6Encrypted Creative&0]&7=====&0-----");
 	    this.config.addDefault("motd2", "s&6[1.10]  &0[&3Fixed Lag out Issues&0]");
@@ -90,7 +91,8 @@ public class Main extends JavaPlugin {
 	public void registerCommands() {
 		this.getCommand("spawn").setExecutor(new SpawnCommands(this));
 		this.getCommand("StaffApps").setExecutor(new StaffApp());
-		this.getCommand("Shop").setExecutor(new me.morgancentral99.encrypted.commands.Shop());
+		this.getCommand("SetSpawn").setExecutor(new SetSpawn(this));
+	//	this.getCommand("Shop").setExecutor(new me.morgancentral99.encrypted.commands.Shop());
 	//	this.getCommand("RTP").setExecutor(new RTP());
 		this.getCommand("furniturehelp").setExecutor(new FurnatureHelp());
 	//	this.getCommand("maintence").setExecutor(new Maintence());
